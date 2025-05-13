@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>Изменение пользователя</title>
+    <style>
+        .centered-submit {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div align="center">
+    <h1>Изменение пользователя</h1>
+    <form th:method="POST" th:action="@{/users/{id}(id=${user.getId()})edit}" th:object="${user}">
+        <input type="hidden" th:field="*{id}" />
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Имя:</td>
+                <td>
+                    <input type="text" th:field="*{name}" id="name"
+                           required
+                           pattern="[A-Za-zА-Яа-яЁё\s]+"
+                           title="Only letters and spaces allowed"
+                           placeholder="Измените Имя"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Surname:</td>
+                <td>
+                    <input type="text" th:field="*{surName}" id="surname"
+                           required
+                           pattern="[A-Za-zА-Яа-яЁё\s]+"
+                           title="Only letters and spaces allowed"
+                           placeholder="Enter surname"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Age:</td>
+                <td>
+                    <input type="number" th:field="*{age}" id="age"
+                           min="0"
+                           max="116"
+                           required
+                           title="Please enter age between 0 and 116"
+                           placeholder="Enter age (0-116)"/>
+                </td>
+            </tr>
+
+            <tr class="centered-submit">
+                <td colspan="2"><input type="submit" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+    <div style="text-align: center; margin-top: 10px;">
+        <a th:href="@{/}" style="text-decoration: none;">
+            <button type="button">Back</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

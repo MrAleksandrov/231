@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>Создание нового пользователя</title>
+    <style>
+        .centered-submit {
+            text-align: center;
+    </style>
+</head>
+<body>
+<div align="center">
+    <h1>Создание нового пользователя</h1>
+    <form th:method="POST" th:action="@{/}" th:object="${user}">
+        <table border="0" cellpadding="5">
+            <tr>
+                <td>Имя:</td>
+                <td>
+                    <input type="text" th:field="*{name}" id="name"
+                           required
+                           pattern=".*\S+.*"
+                           title="Поле не должно быть пустым"
+                           placeholder="Введите имя"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Фамилия:</td>
+                <td>
+                    <input type="text" th:field="*{surName}" id="surname"
+                           required
+                           pattern=".*\S+.*"
+                           title="Поле не должно быть пустым"
+                           placeholder="Введите фамилию"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Возраст:</td>
+                <td>
+                    <input type="number" th:field="*{age}" id="age"
+                           min="0"
+                           max="116"
+                           required
+                           title="Возраст в диапозоне от 0 до 116"
+                           placeholder="Введите возраст"
+                           oninvalid="this.setCustomValidity('Please enter age between 0 and 116')"
+                           oninput="this.setCustomValidity('')"/>
+                </td>
+            </tr>
+
+            <tr class="centered-submit">
+                <td colspan="2"><input type="submit" value="Create"></td>
+            </tr>
+        </table>
+    </form>
+    <div style="text-align: center; margin-top: 10px;">
+        <a th:href="@{/}" style="text-decoration: none;">
+            <button type="button">Back</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>
