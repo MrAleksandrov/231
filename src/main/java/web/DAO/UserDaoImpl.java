@@ -24,12 +24,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         entityManager.remove(entityManager.find(User.class, id));
     }
 
     @Override
-    public User getUserById(long id) {
+    public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 

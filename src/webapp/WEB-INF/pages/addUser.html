@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
+    <meta charset="UTF-8">
     <title>Создание нового пользователя</title>
     <style>
         .centered-submit {
             text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -18,7 +19,7 @@
                 <td>
                     <input type="text" th:field="*{name}" id="name"
                            required
-                           pattern=".*\S+.*"
+                           pattern="[A-Za-zА-Яа-яЁё\s]+"
                            title="Поле не должно быть пустым"
                            placeholder="Введите имя"/>
                 </td>
@@ -29,7 +30,7 @@
                 <td>
                     <input type="text" th:field="*{surName}" id="surname"
                            required
-                           pattern=".*\S+.*"
+                           pattern="[A-Za-zА-Яа-яЁё\s]+"
                            title="Поле не должно быть пустым"
                            placeholder="Введите фамилию"/>
                 </td>
@@ -42,9 +43,9 @@
                            min="0"
                            max="116"
                            required
-                           title="Возраст в диапозоне от 0 до 116"
+                           title="Возраст в диапазоне от 0 до 116"
                            placeholder="Введите возраст"
-                           oninvalid="this.setCustomValidity('Please enter age between 0 and 116')"
+                           oninvalid="this.setCustomValidity('Пожалуйста, введите возраст от 0 до 116')"
                            oninput="this.setCustomValidity('')"/>
                 </td>
             </tr>

@@ -33,22 +33,29 @@ public class UserController {
         return "redirect:/";
     }
     @GetMapping("/edit")
-    public String editUserForId(@RequestParam (value = "userId", required = false) Integer id, Model model) {
+    public String editUserForId(@RequestParam (value = "userId") Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "edit";
     }
 
+//    @PostMapping("/edit")
+//    public String editUser(@ModelAttribute("user") User user, Model model) {
+//        userService.save(user);
+//        return "redirect:/";
+//    }
+
     @PostMapping("/edit")
-    public String editUser(@ModelAttribute("user") User user, Model model) {
+    public String editUser(@ModelAttribute("user") User user,
+                           @RequestParam("userId") Long id, Model model) {
+        user.setId(id); // Важно: устанавливаем ID из параметра
         userService.save(user);
         return "redirect:/";
     }
+
     @RequestMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userId") int id) {
+    public String deleteUser(@RequestParam("userId") Long id) {
         userService.delete(id);
         return "redirect:/";
     }
-
-
 }
